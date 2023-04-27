@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.rlagus.myBatis.dao.IDao">
+	<insert id="writeDao">
+		INSERT INTO myboard(mid, mwriter, mcontent) VALUES(myboard_seq.nextval, #{param1}, #{param2})
+	</insert>
+	
+	<select id="listDao" resultType="com.rlagus.myBatis.dto.BoardDto">
+		SELECT * FROM myboard ORDER BY mid DESC
+	</select>
+	
+	<delete id="deleteDao">
+		DELETE FROM myboard WHERE mid=#{param1}
+	</delete>
+	
+	<select id="totalCount" resultType="int">
+		SELECT COUNT(*) FROM myboard
+	</select>
+
+</mapper>
